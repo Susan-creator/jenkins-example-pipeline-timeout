@@ -35,7 +35,11 @@ pipeline {
   }
 }
 
-def fileExists(String filePath) {
-  def file = new File(filePath)
-  return file.exists()
+def filePath = '/path/to/file.txt'
+
+// Check if the file exists using the fileExists step
+if (fileExists(filePath)) {
+    println "File $filePath exists"
+} else {
+    println "File $filePath does not exist"
 }
