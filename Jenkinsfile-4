@@ -1,3 +1,5 @@
+def filePath = '/etc/redhat-release'
+
 pipeline {
   agent none
   options {
@@ -21,10 +23,10 @@ pipeline {
           echo "Good Morning, $FIRST_NAME"
           try {
             sh 'hostname'
-            if (fileExists('/etc/redhat-release')) {
-              sh 'cat /etc/redhat-release'
+            if (fileExists(filePath)) {
+              sh "cat ${filePath}"
             } else {
-              echo "File /etc/redhat-release does not exist"
+              echo "File ${filePath} does not exist"
             }
           } catch (Exception e) {
             echo "An error occurred: ${e.message}"
@@ -33,4 +35,8 @@ pipeline {
       }
     }
   }
+}
+
+def fileExists(String filePath) {
+  return fileExists(filePath)
 }
