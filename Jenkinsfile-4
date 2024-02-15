@@ -34,13 +34,3 @@ pipeline {
     }
   }
 }
-
-ddef filePath = '/etc/redhat-release'
-
-// Check if the file exists using the readFile step
-try {
-    def fileContent = readFile(filePath)
-    println "File content: ${fileContent}"
-} catch (FileNotFoundException e) {
-    println "File $filePath does not exist"
-}
